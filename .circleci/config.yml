@@ -48,15 +48,12 @@ jobs:
       - run:
           name: Create deployment manifest
           command: |
-            # Replace the placeholders in the manifest with the intended values.
-            # This is to avoid hardcoding the image name in the manifest, to make this
-            # demo project more portable.
             BUILD_DATE=$(date '+%Y%m%d%H%M%S')
             cat kubernetes-manifests/cartservice.yaml.template |\
                sed "s|DOCKER_IMAGE_NAME|<< parameters.docker-image-name >>|\
                 g;s|BUILD_DATE_VALUE|$BUILD_DATE|g;s|VERSION_INFO_VALUE|\
                 << parameters.version-info >>|g" > kubernetes-manifests/cartservice.yaml
-            cat kubernetes-manifests/currencyservice.yaml
+            cat kubernetes-manifests/cartservice.yaml
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: msa-demo
           install-kubectl: true
