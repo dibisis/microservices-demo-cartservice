@@ -43,7 +43,7 @@ spec:
         - name: BUILD_DATE
           value: "BUILD_DATE_VALUE"
         - name: JAEGER_SERVICE_ADDR
-          value: "jaeger-collector:14268"
+          value: "simplest-collector:14268"
         resources:
           requests:
             cpu: 200m
